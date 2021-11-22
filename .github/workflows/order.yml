@@ -1,0 +1,25 @@
+name: setJobOrder
+
+on: [push, pull_request]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: print order
+        run: echo 1
+          
+  job2:
+    runs-on: ubuntu-latest
+
+    # 순서 정의해줌
+    needs: job1
+    
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: print order
+        run: echo 2
